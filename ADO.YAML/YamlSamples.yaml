@@ -1,0 +1,22 @@
+pool:
+  name: ADOPoolName
+
+trigger:
+- BranchName
+
+#
+# Cron schedule
+#
+schedules:
+- cron: "0 * * * *"
+  displayName: "hourly build"
+  branches:
+    include:
+    - Test-JemsmmAppPools
+  always: "true"
+
+steps:
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact: drop'
+  inputs:
+    PathtoPublish: scripts
