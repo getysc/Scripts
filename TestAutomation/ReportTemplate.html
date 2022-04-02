@@ -1,0 +1,75 @@
+<html>
+<head>
+    <style>
+        #results {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+        }
+
+        #summarytable {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+        }
+
+        #results td, #results th, #summarytable td, #summarytable th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #results tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #results th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: teal;
+            color: white;
+        }
+
+        #summarytable th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: teal;
+            color: white;
+        }
+    </style>
+    <title>Test_Result_Title</title>
+</head>
+<body>
+
+    <h2>Summary:: Test_Result_Title</h2>
+
+    <table id="summarytable">
+        <tr>
+            <th>Passed</th>
+            <th>Failed</th>
+            <th>Aborted</th>
+            <th>Not executed</th>
+        </tr>
+        <tr>
+            <td>Passed_Count</td>
+            <td>Failed_Count</td>
+            <td>Aborted_Count</td>
+            <td>Not_Executed_Count</td>
+        </tr>
+    </table>
+
+    <BR>
+    <BR>
+    <h2>Test Results</h2>
+
+    <table id="results">
+        <tr>
+            <th>Test Name</th>
+            <th>Outcome</th>
+            <th>Log</th>
+        </tr>
+        TEST_RESULT_STRING
+
+    </table>
+
+</body>
+</html>
