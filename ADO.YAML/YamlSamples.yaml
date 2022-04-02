@@ -12,7 +12,7 @@ schedules:
   displayName: "hourly build"
   branches:
     include:
-    - Test-JemsmmAppPools
+    - BranchName
   always: "true"
 
 steps:
