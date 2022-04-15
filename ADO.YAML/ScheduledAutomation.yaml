@@ -1,0 +1,24 @@
+pool:
+  name: ADOPoolName
+
+trigger:
+- Test-JemsmmAppPools
+
+schedules:
+- cron: "0 * * * *"
+  displayName: "hourly build"
+  branches:
+    include:
+    - Test-JemsmmAppPools
+  always: "true"
+
+steps:
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact: drop'
+  inputs:
+    PathtoPublish: scripts
+    
+- task: PostBuildCleanup@3
+  displayName: 'Clean Agent Directories'
+  condition: always()
+
