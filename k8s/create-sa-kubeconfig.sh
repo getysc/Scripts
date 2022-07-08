@@ -1,5 +1,6 @@
 #
-# Paste your AWS creds and run below snippet for any work
+# Create Admin KubeConfig file For Lens usage
+# Paste your AWS creds and run below snippet to generate kubeconfig file
 #
 region_code=us-east-1
 cluster_name=YOURCLUSTERNAME
