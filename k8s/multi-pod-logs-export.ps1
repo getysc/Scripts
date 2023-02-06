@@ -10,7 +10,14 @@ done
 
 # powershell
 # Get all pod names
-$pods=kubectl get pods --no-headers -o custom-columns=":metadata.name"
+$namespace='some namespace'
+kubectl -n $namespace get pods --no-headers -o custom-columns=":metadata.name"
+foreach ($pod in $pods)
+{
+  Write-Host "kubectl -n $($namespace) logs $($pod) --all-containers"
+  kubectl -n $namespace logs $pod --all-containers >  "$($pod).log"
+}
+
 foreach ($pod in $pods)
 {
   if ($pod.Contains('infraviz'))
