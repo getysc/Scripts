@@ -11,8 +11,11 @@
 # pods
 kubectl -n default get pods 
 #kubectl get pods --all-namespaces - this kubectl command is used to check the status of pods
-
 #kubectl get -o wide pods --all-namespaces - this kubectl command is used to check detailed status of pods
+
+#pod logs
+kubectl -n default logs -f deployment/deploymentn-green  --all-containers=true --since=30m
+kubectl -n default logs -f deployment/deploymentn-green -c  core-container --timestamps=true -f 
 
 #kubectl create serviceaccount dashboard -n default - to create a service account for your dashboard
 
