@@ -10,7 +10,7 @@ done
 
 # powershell
 # Get all pod names
-$namespace='some namespace'
+$namespace='default'
 kubectl -n $namespace get pods --no-headers -o custom-columns=":metadata.name"
 foreach ($pod in $pods)
 {
