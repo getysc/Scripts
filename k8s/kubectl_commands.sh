@@ -12,8 +12,13 @@
 kubectl -n default get pods 
 #kubectl get pods --all-namespaces - this kubectl command is used to check the status of pods
 #kubectl get -o wide pods --all-namespaces - this kubectl command is used to check detailed status of pods
+kubectl get pods --show-labels
+
+# List all pod secret names
+kubectl get pods -o json | jq '.items[].spec.containers[].env[]?.valueFrom.secretKeyRef.name' | grep -v null | sort | uniq
 
 #pod logs
+kubectl logs -f test-pod-0  # Show Continuous Logs
 kubectl -n default logs -f deployment/deploymentn-green  --all-containers=true --since=30m
 kubectl -n default logs -f deployment/deploymentn-green -c  core-container --timestamps=true -f 
 
@@ -47,6 +52,9 @@ pasted onto the dashboard token pwd.Copy the outcoming secret key.
 
 #kubectl exec shell-demo ls / - to run "ls /" command in running container shell-demo
 
+#  Run a command in existing pod
+# kubectl exec test-pod-0 -- du -sh /u01/test/
+
 #kubectl exec shell-demo cat /proc/1/mounts - to run "cat /proc/1/mounts" running container shell-demo
 
 #kubectl exec -it shell-demo -- /bin/bash - to get a shell to the running container(Note: The double dash symbol “–” is used to separate the arguments you want to pass to the command from the kubectl arguments.)
@@ -56,3 +64,8 @@ pasted onto the dashboard token pwd.Copy the outcoming secret key.
 #kubectl set image deployment/nginx nginx=1.13
 
 #kubectl scale deployment nginx --replicas=9
+
+# Horizontal Scale Up/Down  - https://www.cyberithub.com/horizontal-scale-up-down-the-pods-cpu-utilization-kubernetes/
+kubectl get hpa
+kubectl autoscale rs web-app --max=8 --min=2 --cpu-percent=60
+
