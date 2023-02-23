@@ -22,6 +22,9 @@ kubectl logs -f test-pod-0  # Show Continuous Logs
 kubectl -n default logs -f deployment/deploymentn-green  --all-containers=true --since=30m
 kubectl -n default logs -f deployment/deploymentn-green -c  core-container --timestamps=true -f 
 
+# Look for error in all pods
+for i in $(kubectl get pods | grep my-nginx | awk {'print $1'});do echo "******$i******\n";kubectl logs $i | grep -i error;done
+
 #kubectl create serviceaccount dashboard -n default - to create a service account for your dashboard
 
 #kubectl create clusterrolebinding dashboard-admin -n default --clusterrole=cluster-admin --serviceaccount=default:dashboard - to create cluster binding rules for
@@ -68,4 +71,11 @@ pasted onto the dashboard token pwd.Copy the outcoming secret key.
 # Horizontal Scale Up/Down  - https://www.cyberithub.com/horizontal-scale-up-down-the-pods-cpu-utilization-kubernetes/
 kubectl get hpa
 kubectl autoscale rs web-app --max=8 --min=2 --cpu-percent=60
+
+
+# Stateful and Stateless Pods - https://www.cyberithub.com/how-to-check-stateful-and-stateless-pods-in-kubernetes-cluster/
+kubectl get statefulset
+
+
+
 
