@@ -1,0 +1,7 @@
+
+df -kh
+sudo du -sch *
+sudo systemctl stop collectd
+sudo systemctl disable collectd
+sudo apt-get remove collectd
+sudo rm -rf /var/lib/collectd/
