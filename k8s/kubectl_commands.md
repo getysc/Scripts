@@ -1,3 +1,7 @@
+Cheatsheet
+https://kubernetes.io/docs/reference/kubectl/cheatsheet/
+
+
 #kubectl apply -f https://docs.projectcalico.org/v3.0/getting-started/kubernetes/installation/hosted/kubeadm/1.7/calico.yml - this kubectl command is used to create a pod based on Calico
 
 #kubectl create -f https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard.yaml - this kubectl command is used to create the dashboard
