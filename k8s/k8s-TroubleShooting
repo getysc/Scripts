@@ -1,0 +1,28 @@
+# Kubernetes Troubleshooting
+
+# Get Cluster Events, pods, nodes
+kubectl get events --all-namespaces
+kubectl get pods -n namespace
+kubectl get nodes
+# Checking API Server Health
+kubectl get --raw=/healthz  
+
+# Resource usage metrics 
+kubectl top nodes
+kubectl top pods  -n mynamespace
+
+# check pod logs
+kubectl logs my-pod -n my-namespace
+
+# Describe pod
+kubectl describe pod my-pod -n my-namespace
+
+#  Executing into a Container (-it is used to specify an interactive terminal)
+kubectl exec -it my-pod -n my-namespace -- /bin/bash
+
+#  Port Forwarding for Service Debugging
+# 8080:8080 indicates that you want to forward traffic from your local machine's port 8080 to the pod's port 8080.
+kubectl port-forward mypod -n mynamespace 8080:8080
+curl http://localhost:8080
+
+
